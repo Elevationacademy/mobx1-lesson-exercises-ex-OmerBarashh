@@ -5,5 +5,6 @@ export class Item {
     @observable completed = false
     constructor(name) {
         this.name = name
+        this.location = 'Super Sell'
     }
 }
