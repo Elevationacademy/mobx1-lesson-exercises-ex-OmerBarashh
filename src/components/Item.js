@@ -6,11 +6,12 @@ class Item extends Component {
     checkItem = () => {
         //your code here
       }
-      editItem = () => {
-        //your code here
+      @action editItem = (itemName , newLocation) => {
+        this.props.store.list[itemName].location = newLocation
       }
-      deleteItem = () => {
-        //your code here
+      @action deleteItem = (itemName) => {
+        let index = this.props.store.list.findIndex(itemName)
+        this.props.store.list.splice(index , 1)
       }
       render() {
         let item = this.props.item
@@ -18,8 +19,8 @@ class Item extends Component {
             <div className = {item.completed ? "crossed": null}>
             <input type="checkbox"
                 value={item.name}/> 
-                {item.name}
-                {item.location}
+                {item.name} - {item.location}
+            <button onClick = {this.store.deleteItem}>Delete</button>
             </div>)
     }
 }
