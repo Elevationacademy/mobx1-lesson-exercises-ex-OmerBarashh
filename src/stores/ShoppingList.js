@@ -6,18 +6,20 @@ export class ShoppingList {
     // your code here
     @observable list = [];
     @observable length;
-    checkItem = () => {
+    @action checkItem = () => {
         // your code here
     }
     @action addItem = (name) => {
         let item = new Item(name)
         this.list.push(item)
     }
-    editItem = () => {
-        // your code here
+    @action editItem = (itemName , newLocation) => {
+            this.list.find(m => m.name === itemName).location = newLocation
     }
-    deleteItem = () => {
-        // your code here
+    @action deleteItem = (itemName) => {
+            let index = this.list.indexOf(itemName)
+            this.list.splice(index , 1)
+          }
     } 
-}
+
 
